@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import authImg from "../assets/auth.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAuth,API } from "../store/Auth";
+import { useAuth} from "../store/Auth";
 import { toast } from 'react-toastify';
 
 function Register() {
+  const { storeTokenInLS,API  } = useAuth();
   let [user, setUser] = useState({
     username: "",
     phone: "",
@@ -15,7 +16,6 @@ function Register() {
 
   const navigate = useNavigate();
 
-  const { storeTokenInLS } = useAuth();
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -37,7 +37,7 @@ function Register() {
       console.log(response);
       
       const res_data = await response.json();
-      console.log("res from server",res_data);
+      // console.log("res from server",res_data);
       
       if (response.ok) {
         // localStorage.setItem("token", res_data.token);

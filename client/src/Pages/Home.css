@@ -1,0 +1,95 @@
+/* Home.css */
+
+/* Keyframes for fading in elements */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Hero Section Animations */
+  .hero-section {
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  /* Text animations in the Hero section */
+  .animate-fadeIn {
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+  
+  .animate-fadeInUp {
+    animation: fadeInUp 1.5s ease-in-out forwards;
+  }
+  
+  .delay-1s {
+    animation-delay: 1s;
+  }
+  
+  .delay-2s {
+    animation-delay: 2s;
+  }
+  
+  .delay-3s {
+    animation-delay: 3s;
+  }
+  
+  .delay-4s {
+    animation-delay: 4s;
+  }
+  
+  /* Service Cards */
+  .service-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-in-out forwards;
+  }
+  
+  .service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+  
+  /* CTA button hover effect */
+  .cta-btn {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .cta-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Testimonials slide-up effect */
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slideInUp {
+    animation: slideInUp 1.5s ease forwards;
+  }
+  

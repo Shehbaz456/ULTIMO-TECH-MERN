@@ -6,8 +6,6 @@ function AdminContacts() {
   const [contacts, setContacts] = useState([])
   const { AuthorizationToken,API } = useAuth();
 
-  
-
   async function fetchContacts(){
      try {
        const response = await fetch(`${API}/api/admin/contacts`,{

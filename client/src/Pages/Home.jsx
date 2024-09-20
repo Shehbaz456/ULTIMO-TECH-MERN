@@ -1,14 +1,32 @@
-import React from 'react'
-import landingBgImg from '../assets/images/keyboardImg2.jpg'
-// import landingBgImg from '../assets/images/laptopImg1.jpg'
+import React, { useEffect, useRef } from 'react';
+import landingBgImg from '../assets/images/keyboardImg2.jpg';
 import { FaDesktop, FaMobileAlt, FaBullhorn, FaRocket } from "react-icons/fa";
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 function Home() {
+  const countUpRef = useRef(true); // To manage visibility state for animations
+
+  // Function to render CountUp component with visibility sensor
+  const renderCountUp = (end) => (
+    <VisibilitySensor
+      onChange={(isVisible) => {
+        if (isVisible) {
+          countUpRef.current = true;
+        }
+      }}
+      delayedCall
+      active={!countUpRef.current}
+    >
+      <CountUp end={end} duration={2} />
+    </VisibilitySensor>
+  );
+
   return (
     <div className="bg-gray-900 text-white min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center h-screen bg-cover bg-center" 
-      style={{ backgroundImage: `url(${landingBgImg})` }}>
+      <section className="relative flex items-center justify-center h-screen bg-cover bg-center"
+        style={{ backgroundImage: `url(${landingBgImg})` }}>
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-indigo-400 mb-4 animate-fadeIn">
@@ -23,8 +41,40 @@ function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 px-4 md:px-16 text-center">
+      {/* Stats Section - Animated Bar Counter */}
+      <section className="py-16 px-4 md:px-16 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+          <div className="flex flex-col items-center">
+            <span className="text-3xl text-indigo-400 font-semibold">
+              {renderCountUp(50)}
+            </span>
+            <span>Registered Companies</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-3xl text-indigo-400 font-semibold">
+              {renderCountUp(100000)}
+            </span>
+            <span>Happy Clients</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-3xl text-indigo-400 font-semibold">
+              {renderCountUp(500)}
+            </span>
+            <span>Well Known Developers</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-3xl text-indigo-400 font-semibold">
+              {renderCountUp(24)}
+            </span>
+            <span>24/7 Service</span>
+          </div>
+        </div>
+      </section>
+
+       {/* Services Section */}
+      <hr className="border-t border-gray-700 m-4 pb-6 text-center text-gray-400 text-sm" />
+
+       <section id="services" className="py-16 px-4 md:px-16 text-center">
         <h2 className="text-4xl font-bold text-indigo-400 mb-10 animate-fadeIn">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:bg-opacity-20 animate-fadeInUp">
@@ -81,8 +131,8 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
+      <hr className="border-t border-gray-700 m-4 pb-6 text-center text-gray-400 text-sm" />
       <section className="py-16 px-4 md:px-16 bg-gray-900">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-indigo-400 mb-8">Get in Touch</h2>
@@ -96,4 +146,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

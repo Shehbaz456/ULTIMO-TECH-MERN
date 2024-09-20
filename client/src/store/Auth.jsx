@@ -3,13 +3,17 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = function ({ children }) {
+
+  // const API = import.meta.env.VITE_APP_URI_API
+  const API = import.meta.env.VITE_APP_URI_API;
+  console.log("API URL:", API); // Check if API is correctly fetched
+
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [services, setServices] = useState([]);
   const AuthorizationToken = `Bearer ${token}`;
 
-  const API = import.meta.env.VITE_APP_URI_API
 
   // Storing Token in Local Storage
   const storeTokenInLS = (ServerToken) => {
@@ -35,6 +39,7 @@ export const AuthProvider = function ({ children }) {
           Authorization: AuthorizationToken,
         },
       });
+      console.log("Response userAuth status:", response);
       if (response.ok) {
         const data = await response.json();
         console.log("user data", data.userData);
@@ -54,12 +59,21 @@ export const AuthProvider = function ({ children }) {
     try {
       const response = await fetch(`${API}/api/data/service`, {
         method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: AuthorizationToken,
+        }
       });
+      console.log("Services response status:", response); 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
+      // const responseText = await response.text(); // Log raw response
+      // console.log("Raw response:", responseText);
+      // const data = JSON.parse(responseText); // Parse if it's valid JSON
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       setServices(data);
     } catch (error) {
       console.error("Error fetching services:", error);
@@ -81,6 +95,7 @@ export const AuthProvider = function ({ children }) {
         services,
         AuthorizationToken,
         isLoading,
+        API,
       }}
     >
       {children}

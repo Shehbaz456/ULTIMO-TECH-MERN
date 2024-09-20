@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import loginImg from "../assets/auth.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth,API } from "../store/Auth";
+import { useAuth} from "../store/Auth";
 import { toast } from 'react-toastify';
 function Login() {
+  const { storeTokenInLS,API  } = useAuth();
   let URL = `${API}/api/auth/login`;
 
   let [user, setUser] = useState({ email: "", password: "" });
 
   let navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
   const handelInput = (e) => {
     setUser({
       ...user,

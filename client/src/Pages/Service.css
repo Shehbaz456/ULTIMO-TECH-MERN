@@ -1,0 +1,62 @@
+/* Service.css */
+
+/* Service Card Fade-in Effect */
+.service-card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  /* Delay effect for each card to fade in one after another */
+  .service-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .service-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .service-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  /* Add more nth-child selectors for more cards */
+  
+  /* Keyframes for fade-in */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Card Hover Effect */
+  .service-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Image Zoom-in Effect */
+  .service-img img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-img img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Hover effect on service price */
+  .service-price {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .service-price:hover {
+    color: #4f46e5; /* Slightly brighter indigo */
+    transform: translateY(-2px);
+  }
+  
