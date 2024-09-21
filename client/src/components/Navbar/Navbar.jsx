@@ -49,12 +49,12 @@ const Navbar = () => {
 
           {/* Navigation Links for Desktop */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+            <div className="ml-10  flex items-baseline space-x-6">
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-lg font-medium relative group transition duration-300"
+                  className="text-gray-300  hover:text-white px-3 py-2 text-lg font-medium relative group transition duration-300"
                 >
                   {item.name}
                   <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
@@ -104,7 +104,7 @@ const Navbar = () => {
               <NavLink
                 key={item.name}
                 to={item.href}
-                className="block text-gray-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium relative group transition duration-300"
+                className="block text-gray-300 hover:text-white pt-5  px-3 py-2 rounded-md text-lg font-medium relative text-center group transition duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -115,13 +115,13 @@ const Navbar = () => {
             {isLoggedIn && (
               <div className="flex flex-col space-y-5">
                 {user?.isAdmin && (
-                  <NavLink to="/admin" className="text-gray-300 bg-indigo-600 hover:text-white px-3 py-2 text-lg text-center font-medium relative group transition duration-300">
+                  <NavLink to="/admin" className="text-gray-300 bg-indigo-600 hover:text-white px-3 py-2 text-lg pt-4 text-center font-medium relative group transition duration-300">
                     Dashboard
                     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
                   </NavLink>
                 )}
 
-                <NavLink to="/logout" className="text-gray-300 bg-red-500 hover:text-white px-3 py-2 text-lg font-medium relative group transition duration-300">
+                <NavLink to="/logout" className="text-gray-300 bg-red-500 hover:text-white px-3 py-2 text-lg pt-4 text-center font-medium relative group transition duration-300">
                   Logout
                   <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
                 </NavLink>
@@ -129,14 +129,14 @@ const Navbar = () => {
             )}
 
             {!isLoggedIn && (
-              <div className="flex flex-col space-y-5">
+              <div className="flex flex-col space-y-5 pt-4">
                 <NavLink to="/register" className="text-gray-300 bg-blue-600 hover:text-white px-3 py-2 text-lg text-center font-medium relative group transition duration-300">
                   Register
                   <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
                 </NavLink>
                 <NavLink to="/login" className="text-gray-300 bg-blue-600 hover:text-white px-3 py-2 text-lg text-center font-medium relative group transition duration-300">
                   Login
-                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+                  <span className="absolute text-center left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
                 </NavLink>
               </div>
             )}
