@@ -1,0 +1,35 @@
+/* Navbar.css */
+
+/* Smooth underline transition for NavLink hover */
+.group:hover span {
+    width: 100%;
+    transition: width 0.5s ease;
+  }
+  
+  /* Desktop Navigation Link Hover */
+  .group:hover {
+    color: #ffffff;
+  }
+  
+  /* Mobile menu smooth slide-down */
+  #mobile-menu {
+    transform: translateY(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  /* Transition for hover effect on navbar links */
+  .navbar-link {
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Mobile menu background color */
+  #mobile-menu {
+    background-color: #1f2937;
+  }
+  
+  /* Brand title hover effect */
+  .navbar-title:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+  

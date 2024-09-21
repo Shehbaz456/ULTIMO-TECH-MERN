@@ -1,95 +1,273 @@
-/* Home.css */
+/* General Styles */
+.home-container {
+  font-family: 'Inter', sans-serif;
+}
 
-/* Keyframes for fading in elements */
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Hero Section Animations */
-  .hero-section {
-    animation: fadeIn 2s ease forwards;
-  }
-  
-  /* Text animations in the Hero section */
-  .animate-fadeIn {
-    animation: fadeIn 2s ease-in-out forwards;
-  }
-  
-  .animate-fadeInUp {
-    animation: fadeInUp 1.5s ease-in-out forwards;
-  }
-  
-  .delay-1s {
-    animation-delay: 1s;
-  }
-  
-  .delay-2s {
-    animation-delay: 2s;
-  }
-  
-  .delay-3s {
-    animation-delay: 3s;
-  }
-  
-  .delay-4s {
-    animation-delay: 4s;
-  }
-  
-  /* Service Cards */
-  .service-card {
+/* Hero Section */
+.hero-section {
+  background: url('../assets/images/keyboardImg2.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  height: 100vh;
+  position: relative;
+}
+
+.hero-content {
+  z-index: 2;
+  text-align: center;
+  position: relative;
+}
+
+.hero-title {
+  animation: slideInDown 1.5s ease-out forwards;
+}
+
+.hero-subtitle {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.hero-btn {
+  display: inline-block;
+  background-color: #6366F1;
+  padding: 12px 24px;
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  background-color: #4F46E5;
+  box-shadow: 0px 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Stats Section */
+.stats-section {
+  background-color: #1F2937;
+}
+
+.stat-card {
+  color: white;
+  background-color: #111827;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+  background-color: #1E293B;
+}
+
+.stat-number {
+  font-size: 3rem;
+  color: #6366F1;
+}
+
+.stat-text {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #9CA3AF;
+}
+
+/* Services Section */
+.services-section {
+  background-color: #1F2937;
+}
+
+.service-card {
+  padding: 30px;
+  background-color: #111827;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  background-color: #1E293B;
+}
+
+.service-icon {
+  font-size: 4rem;
+  color: #6366F1;
+  margin-bottom: 15px;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.service-description {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #9CA3AF;
+  line-height: 1.5;
+}
+
+/* About Section */
+.about-section {
+  background-color: #1F2937;
+  padding: 80px 0;
+}
+
+.about-description {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #9CA3AF;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  background-color: #1F2937;
+  padding: 80px 0;
+}
+
+.testimonial-card {
+  background-color: #111827;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  background-color: #1E293B;
+}
+
+.testimonial-card p {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  font-weight: 500;
+  color: #6366F1;
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #1F2937;
+}
+
+.contact-btn {
+  background-color: #6366F1;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-btn:hover {
+  background-color: #4F46E5;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-50px);
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1.5s ease-in-out forwards;
   }
-  
-  .service-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  /* Stats Section */
-  .stats-section {
-    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  /* CTA button hover effect */
-  .cta-btn {
-    transition: transform 0.3s ease-in-out;
+  100% {
+    opacity: 1;
   }
-  
-  .cta-btn:hover {
-    transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
   }
-  
-  /* Testimonials slide-up effect */
-  @keyframes slideInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .animate-slideInUp {
-    animation: slideInUp 1.5s ease forwards;
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
   }
-  
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .service-icon {
+    font-size: 3rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-text {
+    font-size: 0.9rem;
+  }
+
+  .service-title {
+    font-size: 1.2rem;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+}
