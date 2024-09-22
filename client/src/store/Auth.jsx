@@ -36,6 +36,7 @@ export const AuthProvider = function ({ children }) {
       const response = await fetch(`${API}/api/auth/user`, {
         method: "GET",
         headers: {
+          "Content-Type": "application/json",
           Authorization: AuthorizationToken,
         },
       });
