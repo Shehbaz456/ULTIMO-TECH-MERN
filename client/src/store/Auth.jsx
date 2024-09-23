@@ -6,7 +6,7 @@ export const AuthProvider = function ({ children }) {
 
   // const API = import.meta.env.VITE_APP_URI_API
   const API = import.meta.env.VITE_APP_URI_API;
-  console.log("API URL:", API); // Check if API is correctly fetched
+  // console.log("API URL:", API); // Check if API is correctly fetched
 
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
@@ -40,16 +40,13 @@ export const AuthProvider = function ({ children }) {
           Authorization: AuthorizationToken,
         },
       });
-      console.log("Response userAuth status:", response);
       if (response.ok) {
         const data = await response.json();
         console.log("user data", data.userData);
         setUser(data.userData);
         setIsLoading(false);
-      } else {
-        console.error("Error fetching user data");
-        setIsLoading(false);
       }
+
     } catch (error) {
       console.error("Error fetching user data", error);
     }
@@ -61,21 +58,17 @@ export const AuthProvider = function ({ children }) {
       const response = await fetch(`${API}/api/data/service`, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          // Authorization: AuthorizationToken,
+          "Content-Type": "application/json"
         }
       });
-      console.log("Services response status:", response); 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      // const responseText = await response.text(); // Log raw response
-      // console.log("Raw response:", responseText);
-      // const data = JSON.parse(responseText); // Parse if it's valid JSON
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setServices(data);
+      
     } catch (error) {
       console.error("Error fetching services:", error);
     }

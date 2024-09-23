@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../store/Auth';
 import './Navbar.css'; // Import for additional CSS
+import {useAuth} from '../../store/Auth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -63,17 +63,6 @@ const Navbar = () => {
 
               {isLoggedIn ? (
                 <>
-                  {/* Show the Dashboard link only if the user is an admin */}
-                  {user?.isAdmin && (
-                    <NavLink
-                      to="/admin"
-                      className="text-gray-300 hover:text-white px-3 py-2 text-lg font-medium relative group transition duration-300"
-                    >
-                      Dashboard
-                      <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
-                    </NavLink>
-                  )}
-
                   <NavLink to="/logout" className="text-gray-300 hover:text-white px-3 py-2 text-lg font-medium relative group transition duration-300">
                     Logout
                     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
@@ -114,13 +103,7 @@ const Navbar = () => {
 
             {isLoggedIn && (
               <div className="flex flex-col space-y-5">
-                {user?.isAdmin && (
-                  <NavLink to="/admin" className="text-gray-300 bg-indigo-600 hover:text-white px-3 py-2 text-lg pt-4 text-center font-medium relative group transition duration-300">
-                    Dashboard
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
-                  </NavLink>
-                )}
-
+                
                 <NavLink to="/logout" className="text-gray-300 bg-red-500 hover:text-white px-3 py-2 text-lg pt-4 text-center font-medium relative group transition duration-300">
                   Logout
                   <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>

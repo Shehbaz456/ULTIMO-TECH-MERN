@@ -1,24 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 import { FaDesktop, FaMobileAlt, FaBullhorn, FaRocket } from 'react-icons/fa';
 import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
 
 function Home() {
   const [hasAnimated, setHasAnimated] = useState(false);
-
-  const renderCountUp = (end) => (
-    <VisibilitySensor
-      onChange={(isVisible) => {
-        if (isVisible && !hasAnimated) {
+  const statRefs = useRef([]);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
           setHasAnimated(true);
+          observer.disconnect(); // Once animated, stop observing
         }
-      }}
-      delayedCall
-      partialVisibility
-    >
+      });
+    });
+
+    statRefs.current.forEach(ref => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
+
+    return () => observer.disconnect(); // Cleanup on unmount
+  }, []);
+
+  const renderCountUp = (end, index) => (
+    <div ref={(el) => statRefs.current[index] = el}>
       <CountUp end={hasAnimated ? end : 0} duration={3} />
-    </VisibilitySensor>
+    </div>
   );
 
   return (
@@ -42,19 +53,19 @@ function Home() {
         <h2 className="section-title text-4xl font-bold text-indigo-400 mb-10">Our Achievements</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="stat-card animate-fadeInUp">
-            <div className="stat-number">{renderCountUp(100)}</div>
+            <div className="stat-number">{renderCountUp(100, 0)}</div>
             <p className="stat-text">Projects Completed</p>
           </div>
           <div className="stat-card animate-fadeInUp delay-1s">
-            <div className="stat-number">{renderCountUp(200)}</div>
+            <div className="stat-number">{renderCountUp(200, 1)}</div>
             <p className="stat-text">Satisfied Clients</p>
           </div>
           <div className="stat-card animate-fadeInUp delay-2s">
-            <div className="stat-number">{renderCountUp(50)}</div>
+            <div className="stat-number">{renderCountUp(50, 2)}</div>
             <p className="stat-text">Professional Developers</p>
           </div>
           <div className="stat-card animate-fadeInUp delay-3s">
-            <div className="stat-number">{renderCountUp(24)}</div>
+            <div className="stat-number">{renderCountUp(24, 3)}</div>
             <p className="stat-text">24/7 Support</p>
           </div>
         </div>
