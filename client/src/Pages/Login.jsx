@@ -32,8 +32,9 @@ function Login() {
       if (response.ok) {
         toast.success("Login successfully");
         setUser({ email: "", password: "" });
-        navigate("/");
         storeTokenInLS(res_data.token);
+        console.log("Stored token:", res_data.token); // Log the token
+        navigate("/");
       } else {
         toast.error(res_data.extraDetails || res_data.message);
       }

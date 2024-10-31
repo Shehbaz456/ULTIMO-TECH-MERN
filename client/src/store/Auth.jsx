@@ -6,7 +6,7 @@ export const AuthProvider = function ({ children }) {
 
   // const API = import.meta.env.VITE_APP_URI_API
   const API = import.meta.env.VITE_APP_URI_API;
-  // console.log("API URL:", API); // Check if API is correctly fetched
+  console.log("API URL:", API); // Check if API is correctly fetched
 
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
@@ -26,6 +26,7 @@ export const AuthProvider = function ({ children }) {
   // Takeling Logout functinality
   const LogoutUser = () => {
     setToken("");
+    setUser(null); // Clear user on logout
     return localStorage.removeItem("token");
   };
 
@@ -40,15 +41,25 @@ export const AuthProvider = function ({ children }) {
           Authorization: AuthorizationToken,
         },
       });
-      if (response.ok) {
+      
+      if(response.status === 401) {
+        console.log("Unauthorized: Token might be invalid or expired. Logging out...");
+        setUser(null); // Clear user
+        LogoutUser();  // Clear invalid token from local storage
+        setIsLoading(false);
+      }
+      if(response.ok) {
         const data = await response.json();
         console.log("user data", data.userData);
         setUser(data.userData);
         setIsLoading(false);
+        
       }
 
     } catch (error) {
       console.error("Error fetching user data", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -66,7 +77,6 @@ export const AuthProvider = function ({ children }) {
       }
       
       const data = await response.json();
-      // console.log(data);
       setServices(data);
       
     } catch (error) {

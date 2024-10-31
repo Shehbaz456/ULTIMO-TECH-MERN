@@ -9,23 +9,16 @@ function About() {
       
       <div className="relative bg-gray-800 bg-opacity-20 backdrop-blur-lg shadow-lg rounded-xl p-10 max-w-5xl w-full">
      
-    <p className="text-indigo-400 text-2xl font-bold" id="AboutUsername">Welcome , {user ? user.username:`to our website`}</p>
-        <div className="relative z-10 text-center space-y-8">
-       
-          
+    <p className="text-indigo-400 text-2xl font-bold" id="AboutUsername">Welcome , 
+    {user ? user.username:`to our website`}</p>
+        <div className="relative z-10 text-center space-y-8"> 
           <h1 className="text-2xl lg:text-4xl font-bold text-white animate-fadeInUp">
             About <span className="text-indigo-400">ULTIMO TECH</span>
           </h1>
-
-      
           <p className="text-xl lg:text-xl text-gray-300 animate-fadeInUp delay-200">
             Shaping the Future of Digital Innovation
           </p>
-
-     
           <div className="border-t-2 border-gray-600 w-2/3 mx-auto animate-fadeInUp delay-400"></div>
-
-
           <div className="text-gray-400 text-lg lg:text-xl leading-relaxed space-y-6 animate-fadeInUp delay-600">
             <p>
               At <span className="text-indigo-400 font-bold">ULTIMO TECH</span>, we are committed to delivering cutting-edge digital solutions
