@@ -10,7 +10,7 @@ const { connectDB } = require("./utils/DB");
 const errorMiddleware = require('./middlewares/error-middleware');
 const port =  process.env.PORT || 8000;
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: '*',
   method:"POST GET PUT PATCH DELETE HEAD",
   credentials: true
 }
