@@ -10,7 +10,7 @@ const { connectDB } = require("./utils/DB");
 const errorMiddleware = require('./middlewares/error-middleware');
 let port =  process.env.PORT || 8000;
 const corsOptions = {
-  origin: '*',
+  origin: 'https://ultimo-tech-frontend.onrender.com',
   method:"POST GET PUT PATCH DELETE HEAD",
   credentials: true
 }
