@@ -30,6 +30,6 @@ app.use(errorMiddleware)
 
 connectDB().then(() => {
   app.listen(port, () => {
-    console.log("Active port 8000");
+    console.log(`Active port ${port}`);
   });
 });
