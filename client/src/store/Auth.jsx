@@ -6,7 +6,7 @@ export const AuthProvider = function ({ children }) {
 
   // const API = import.meta.env.VITE_APP_URI_API
   const API = import.meta.env.VITE_APP_URI_API;
-  console.log("API URL:", API); // Check if API is correctly fetched
+  // console.log("API URL:", API); // Check if API is correctly fetched
 
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
