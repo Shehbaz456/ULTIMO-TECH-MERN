@@ -37,6 +37,7 @@ const AdminContactEdit = () => {
     useEffect(()=>{
         Contactdata();
     },[id, AuthorizationToken])
+    
     function handleInputChange(e){
         const {name , value} = e.target;
         setFormData((prevData) => ({

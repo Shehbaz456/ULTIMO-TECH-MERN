@@ -52,7 +52,7 @@ function Register() {
         // console.error("Registration failed:", errorData);
       }
     } catch (error) {
-      console.log("Registraction Fail : ", error);
+      console.log("Registration Error: ", error);
     }
   };
 

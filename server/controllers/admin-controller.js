@@ -66,7 +66,7 @@ const deleteUserById = async(req,res,next)=>{
 }
 
 // Get Single Contact
-const getContactById = async(req,res,next)=>{
+const  getContactById = async(req,res,next)=>{
     try {
         const {id} = req.params;
         const contact = await Contact.findById(id);
@@ -107,4 +107,4 @@ const deleteContactById = async(req,res,next)=>{
     }
 }
 
-module.exports = {getAllusers,getUserById,updateUserById,deleteUserById,getAllContacts,getContactById,updateContactById,deleteContactById}
+module.exports = {getAllusers,getUserById,updateUserById,deleteUserById,getAllContacts,getContactById,updateContactById,deleteContactById} 
