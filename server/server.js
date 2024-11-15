@@ -8,6 +8,7 @@ const serviceRoute = require("./router/service-router");
 const adminRoute = require("./router/admin-router");
 const { connectDB } = require("./utils/DB");
 const errorMiddleware = require('./middlewares/error-middleware');
+
 let port =  process.env.PORT || 8000;
 const corsOptions = {
   origin: 'https://ultimo-tech-frontend.onrender.com',
