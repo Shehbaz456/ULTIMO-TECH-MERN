@@ -29,12 +29,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="*" element={<ErrorPage />} />
         <Route path='/admin' element={<AdminLayout />} > 
         <Route path='users' element={<AdminUsers />} />
         <Route path='users/:id' element={<AdminEdit />}  />
         <Route path='contacts' element={<AdminContacts />} />
         <Route path='contacts/:id' element={<AdminContactEdit />} />
+        <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
       <Footer/>
